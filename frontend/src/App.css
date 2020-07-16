@@ -1,0 +1,61 @@
+
+.formjs{
+  padding: 20px;
+  text-align: center;
+  background-color: rgb(170, 238, 238);
+  color: black;
+  font-size: 30px;
+  background-image: url(./logo.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-blend-mode: soft-light;
+  -moz-box-shadow: 10px 10px 5px #656565;
+  -webkit-box-shadow: 10px 10px 5px #656565;
+  -o-box-shadow: 10px 10px 5px #656565;
+  box-shadow: 5px 5px 5px #656565;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.listjs{
+  display: grid;
+  gap: 1rem;
+  font-size: 150%;
+  margin-top: 0.5%;
+  background: url(./wall.png);
+  background-size: cover;
+  background-blend-mode: soft-light;
+}
+
+div.case{
+  -moz-box-shadow: 10px 10px 5px #656565;
+  -webkit-box-shadow: 10px 10px 5px #656565;
+  -o-box-shadow: 10px 10px 5px #656565;
+  box-shadow: 5px 5px 5px #656565;
+  border-radius: 10px 10px 10px 10px;
+  background-color: rgb(170, 238, 238);
+
+
+}
+
+div.date{
+text-align: right;
+margin-right: 1%;
+}
+
+div.title{
+  font-weight: bold;
+}
+
+div.description{
+  margin-left: 1cm;
+}
+
+
+.actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox {
+  font-weight: bold;
+}
