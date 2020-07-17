@@ -13,11 +13,10 @@ export default function Title({test,settest, selected}) {
   const [text, onSubmitText] = useState(''); //comment remonter l'index?
   const [description, onSubmitDescription] = useState('');
   const [index, setIndex] = useState(null);
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleFormSearch = event => {
-    console.log(searchTerm);
-    setSearchTerm(event.target.value);
+    console.log('je suis là');
   };
 
   useEffect(() => {
@@ -33,10 +32,10 @@ export default function Title({test,settest, selected}) {
     console.log(text);
     console.log('test', selected);
 
-    let newTab =[...test]
+    let newTab =[...test] 
+
     if(selected){
-    
-    newTab = newTab.map(item => {
+        newTab = newTab.map(item => {
       console.log('selected._id',selected._id);
       console.log('item._id', item._id);
       if (item._id === selected._id){
@@ -60,7 +59,7 @@ export default function Title({test,settest, selected}) {
 
     
   } else {
-    console.log('je suis là');
+
     axios.post('http://localhost:4200/todo', {
       titre: text,
       description: description,

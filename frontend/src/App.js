@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Title from './lib/components/form';
 import List from './lib/components/list';
+import SearchField from './lib/components/search';
 import './App.css';
 
 
 export default function App() {
   const [selected, setSelected] = useState(null)
   const [ajout, setAjout] = useState([]) 
+  const [filter, onFilter] = useState([]) 
 
      useEffect(() => {
       fetchTodo()
@@ -32,6 +34,8 @@ export default function App() {
      <div className='appjs'>
 
     <Title test = {ajout} settest = {fetchTodo} selected={selected}/>
+
+    <SearchField  filter={res.data.todos} onFilter={setAjout}/> 
 
     <List test = {ajout} settest = {fetchTodo} edit={setSelected}/>  
 
