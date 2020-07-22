@@ -94,16 +94,7 @@ export default function Title({test,settest, selected}) {
           />
       <Button className = 'Button' variant="contained" color="primary" onClick={handleFormSubmit}>valider</Button>
       </div>
-      <div className = 'search'>
-      <TextField className = 'Search' id="standard-basic"
-     id="filled-enabled"
-     label="rechercher"
-        value={searchTerm}
-      onChange={(event,searchTerm) => setSearchTerm(event.target.value)}
-     />
- <Button className = 'Button' variant="contained" color="primary" onClick={handleFormSearch}>Rechercher</Button>
- </div>
-
+      
       </div>
     )
   }

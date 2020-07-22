@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Title from './lib/components/form';
 import List from './lib/components/list';
+import Footer from './lib/components/footer';
 import SearchField from './lib/components/search';
 import './App.css';
 
@@ -9,7 +10,7 @@ import './App.css';
 export default function App() {
   const [selected, setSelected] = useState(null)
   const [ajout, setAjout] = useState([]) 
-  const [filter, onFilter] = useState([]) 
+  const [items, onFilter] = useState([]) 
 
      useEffect(() => {
       fetchTodo()
@@ -24,6 +25,7 @@ export default function App() {
   .then(res => {
     console.log(res.data)
     setAjout(res.data.todos)
+    onFilter(res.data.todos)
   })
 //   .then(setAjout)
   .catch((error) => console.log('error', error))
@@ -33,11 +35,14 @@ export default function App() {
 
      <div className='appjs'>
 
+    <div className='header'>
     <Title test = {ajout} settest = {fetchTodo} selected={selected}/>
 
-    <SearchField  filter={res.data.todos} onFilter={setAjout}/> 
+    <SearchField  items = {ajout} onFilter={onFilter} /> 
+    </div>
 
-    <List test = {ajout} settest = {fetchTodo} edit={setSelected}/>  
+    <List test = {items} settest = {fetchTodo} edit={setSelected}/>  
+    <Footer/>
 
 
     </div>

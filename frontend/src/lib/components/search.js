@@ -4,6 +4,8 @@ import {TextField,InputAdornment} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
+import '../../App.css';
+
 
 const SearchField = ({items, onFilter, ...props}) => {
   const [search, setSearch] = useState('');
@@ -11,15 +13,24 @@ const SearchField = ({items, onFilter, ...props}) => {
     const search = get(evt, 'target.value', '').toLowerCase();
     setSearch(get(evt, 'target.value', ''));
     const filteredList = reduce(items, (acc, item) => {
-      const lower = item.label.toLowerCase();
+      const lowerD = item.titre.toLowerCase();
+      console.log(lowerD);
+      if (lowerD.includes(search)) {
+        acc.push(item);
+        console.log(item);
+      }
+      const lower = item.description.toLowerCase();
+      console.log(lower);
       if (lower.includes(search)) {
         acc.push(item);
+        console.log(item);
       }
 
       return acc;
     }, []);
     console.log('i am here');
-    onFilter(filteredList); /// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    onFilter(filteredList);
+    console.log(filteredList);
   };
 
   const clear = () => {
@@ -28,8 +39,9 @@ const SearchField = ({items, onFilter, ...props}) => {
   };
 
   return (
+    <div className= 'search'>
     <TextField
-    value=''
+    value={search}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
@@ -44,6 +56,7 @@ const SearchField = ({items, onFilter, ...props}) => {
       }}
       onChange={filter}
       {...props}/>
+    </div>
   );
 };
 
