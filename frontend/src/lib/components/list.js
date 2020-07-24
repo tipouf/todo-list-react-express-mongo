@@ -43,9 +43,6 @@ const remove =  (index) => {
   })
 }
 
-
-
-
  const editable = (index) => {
  console.log(test[index])
  //  var newtext = test[index].titre + '1';  //remplacer par la nouvelle valeur du champ de
@@ -63,7 +60,7 @@ return (
     //item equivalent de test[i]x
 
     <Grid item xs={24} sm={4}>
-    <div className='case'>
+    <div className='case' onClick={(event)=> update(event,item._id)}>
         <div className='checkbox'>
         <Checkbox className='checkbox'
         id="checkbox" 
@@ -87,7 +84,7 @@ return (
         </div>
         
 </div>
-        </Grid>) : "pas de liste"}
+        </Grid>) : "error"}
   </Grid>
   </div>
   )

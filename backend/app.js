@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
 const Todo = require('./models/Todo');
 
 
-//  mongoose.connect('mongodb+srv://tipi:tipi@tipouf.cqndp.gcp.mongodb.net/test?retryWrites=true&w=majority',
-    mongoose.connect('mongodb://localhost/todo',
+   mongoose.connect('mongodb+srv://tipi:tipi@tipouf.cqndp.gcp.mongodb.net/test?retryWrites=true&w=majority',
+  //  mongoose.connect('mongodb://localhost/todo',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

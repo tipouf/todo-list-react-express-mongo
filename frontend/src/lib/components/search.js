@@ -14,17 +14,18 @@ const SearchField = ({items, onFilter, ...props}) => {
     setSearch(get(evt, 'target.value', ''));
     const filteredList = reduce(items, (acc, item) => {
       const lowerD = item.titre.toLowerCase();
-      console.log(lowerD);
+      const lower = item.description.toLowerCase();
+      if (lower === lowerD){
       if (lowerD.includes(search)) {
         acc.push(item);
         console.log(item);
-      }
-      const lower = item.description.toLowerCase();
-      console.log(lower);
-      if (lower.includes(search)) {
+      }}else{
+      if (lowerD.includes(search) || lower.includes(search)) {
         acc.push(item);
         console.log(item);
       }
+
+    }
 
       return acc;
     }, []);
