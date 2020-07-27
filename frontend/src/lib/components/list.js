@@ -39,6 +39,7 @@ const remove =  (index) => {
   axios.delete(`http://localhost:4200/todo/${index}`)
   .then(() => {
     settest()
+    
     console.log('I delete this todo')
   })
 }
@@ -56,7 +57,7 @@ const remove =  (index) => {
 return (  
   <div className='listjs'>
   <Grid container spacing={2}>
-    { test ? test.map((item,index) => 
+    { test ? test.slice(0).reverse().map((item,index) => 
     //item equivalent de test[i]x
 
     <Grid item xs={24} sm={4}>

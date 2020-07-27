@@ -17,8 +17,10 @@ div.case{
   box-shadow: 5px 5px 5px #656565;
   border-radius: 10px 10px 10px 10px;
   background-color: rgb(170, 238, 238);
+}
 
-
+div.case:hover{
+  background-color: rgb(206, 238, 170);
 }
 
 div.date{
@@ -59,6 +61,7 @@ div.header{
   -o-box-shadow: 10px 10px 5px #656565;
   box-shadow: 5px 5px 5px #656565;
   border-radius: 10px 10px 10px 10px;
+  display: flex;
 }
 
 div.footer{
@@ -72,4 +75,16 @@ div.footer{
   bottom:0;
   width:100%;
   padding-top:10px;
+}
+
+div.login{
+  text-align: left;
+}
+
+div.input{
+  text-align: center;
+}
+
+div.snackbar{
+  border-left: 0cm;
 }

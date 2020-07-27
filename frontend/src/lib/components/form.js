@@ -1,8 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
 import '../../App.css';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />
+}
 
 
 export default function Title({test,settest, selected}) {
@@ -14,6 +20,20 @@ export default function Title({test,settest, selected}) {
   const [description, onSubmitDescription] = useState('');
   const [index, setIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [open, setOpen] = useState(false);
+  const [openFailed, setOpenFailed] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const handleFormSearch = event => {
     console.log('je suis là');
@@ -31,6 +51,9 @@ export default function Title({test,settest, selected}) {
     const handleFormSubmit = event => {
     console.log(text);
     console.log('test', selected);
+    if (text && description) {
+      handleClick()
+    }
 
     let newTab =[...test] 
 
@@ -77,7 +100,14 @@ export default function Title({test,settest, selected}) {
     return (
       <div className='formjs'>
       <h1>ToDo List</h1>
-    
+      <div className='snackbar'>
+    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="success">
+        This is a success message!
+      </Alert>
+    </Snackbar>
+
+    </div>
       <div className = 'add'>
 
      <TextField className = 'Textfield' id="standard-basic"
