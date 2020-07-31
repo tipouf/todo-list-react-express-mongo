@@ -20,6 +20,7 @@ div.case{
 }
 
 div.case:hover{
+  transform: scale(1.02) translate(-2px);
   background-color: rgb(206, 238, 170);
 }
 
@@ -61,7 +62,11 @@ div.header{
   -o-box-shadow: 10px 10px 5px #656565;
   box-shadow: 5px 5px 5px #656565;
   border-radius: 10px 10px 10px 10px;
-  display: flex;
+  display: grid;
+}
+
+div.header:hover{
+  background-color: rgb(206, 238, 170);
 }
 
 div.footer{
@@ -86,5 +91,6 @@ div.input{
 }
 
 div.snackbar{
-  border-left: 0cm;
+  position: absolute;
+
 }

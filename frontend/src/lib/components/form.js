@@ -14,17 +14,21 @@ function Alert(props) {
 export default function Title({test,settest, selected}) {
 
   //const onChangeText = (event) => {console.log(event.target.value)}
-  const dateActuelle = new Date();
+  const dateActuelle = new Date;
 
   const [text, onSubmitText] = useState(''); //comment remonter l'index?
   const [description, onSubmitDescription] = useState('');
   const [index, setIndex] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [open, setOpen] = useState(false);
   const [openFailed, setOpenFailed] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
+  };
+
+  const handleClickFailed = () => {
+    setOpenFailed(true);
   };
 
   const handleClose = (event, reason) => {
@@ -33,6 +37,7 @@ export default function Title({test,settest, selected}) {
     }
 
     setOpen(false);
+    setOpenFailed(false);
   };
 
   const handleFormSearch = event => {
@@ -53,10 +58,10 @@ export default function Title({test,settest, selected}) {
     console.log('test', selected);
     if (text && description) {
       handleClick()
+    }else{
+      handleClickFailed()
     }
-
     let newTab =[...test] 
-
     if(selected){
         newTab = newTab.map(item => {
       console.log('selected._id',selected._id);
@@ -87,7 +92,7 @@ export default function Title({test,settest, selected}) {
       titre: text,
       description: description,
       check: false,
-      date: dateActuelle.toString()
+      date: dateActuelle
     })
     .then(() => {
       console.log('I save todo')
@@ -101,13 +106,20 @@ export default function Title({test,settest, selected}) {
       <div className='formjs'>
       <h1>ToDo List</h1>
       <div className='snackbar'>
-    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+    <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success">
-        This is a success message!
+        Nouvelle ToDo 
       </Alert>
     </Snackbar>
-
     </div>
+    <div className='snackbarFailed'>
+    <Snackbar open={openFailed} autoHideDuration={4000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="error">
+        Veuillez renseigner le titre et la description!
+      </Alert>
+    </Snackbar>
+    </div>
+
       <div className = 'add'>
 
      <TextField className = 'Textfield' id="standard-basic"
@@ -117,7 +129,7 @@ export default function Title({test,settest, selected}) {
           onChange={(event,text) => onSubmitText(event.target.value)}
         />
       <TextField className = 'Textfield2' id="standard-basic"
-          id="filled-enabled"
+          id="filled-enabled2"
           label="description"
              value={description}
           onChange={(event,description) => onSubmitDescription(event.target.value)}
