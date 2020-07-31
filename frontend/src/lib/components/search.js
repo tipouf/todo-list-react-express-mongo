@@ -3,7 +3,7 @@ import {get, reduce} from 'lodash';
 import {TextField,InputAdornment} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
-
+import Rating from '@material-ui/lab/Rating';
 import '../../App.css';
 
 
@@ -26,6 +26,8 @@ const SearchField = ({items, onFilter, ...props}) => {
     onFilter(filteredList);
     console.log(filteredList);
   };
+
+  const [value, setValue] = useState(0);
 
   const clear = () => {
     onFilter(items);
@@ -50,6 +52,13 @@ const SearchField = ({items, onFilter, ...props}) => {
       }}
       onChange={filter}
       {...props}/>
+        <Rating
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        />
     </div>
   );
 };

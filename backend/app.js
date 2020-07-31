@@ -78,6 +78,7 @@ app.use((req, res, next) => {
     });
 
     app.put('/todo/:id', (req, res, next) => {
+      console.log(req.body)
       Todo.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
         .then(() => res.status(200).json({ message: 'Objet modifié !'}))
         .catch(error => res.status(400).json({ error }));

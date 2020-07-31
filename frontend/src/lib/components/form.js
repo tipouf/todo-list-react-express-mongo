@@ -92,7 +92,8 @@ export default function Title({test,settest, selected}) {
       titre: text,
       description: description,
       check: false,
-      date: dateActuelle
+      date: dateActuelle,
+      rating: 2
     })
     .then(() => {
       console.log('I save todo')

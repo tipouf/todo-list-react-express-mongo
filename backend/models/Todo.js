@@ -5,6 +5,7 @@ const todoSchema = mongoose.Schema({
   titre: { type: String, required: true },
   description: { type: String, required: true},
   date: { type: Date, required: false },
+  rating: { type: Number, required: false, defaultTo: 0 },
   check: { type: Boolean, required: false, defaultTo: false }
 });
 
