@@ -17,6 +17,11 @@ div.case{
   box-shadow: 5px 5px 5px #656565;
   border-radius: 10px 10px 10px 10px;
   background-color: rgb(170, 238, 238);
+  background-image: url(./check.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  background-blend-mode: soft-light;
 }
 
 div.case:hover{

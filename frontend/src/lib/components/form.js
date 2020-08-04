@@ -4,7 +4,10 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/fr';
 import '../../App.css';
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />
@@ -14,7 +17,8 @@ function Alert(props) {
 export default function Title({test,settest, selected}) {
 
   //const onChangeText = (event) => {console.log(event.target.value)}
-  const dateActuelle = new Date;
+  const dateActuelle = moment();
+
 
   const [text, onSubmitText] = useState(''); //comment remonter l'index?
   const [description, onSubmitDescription] = useState('');
@@ -92,7 +96,7 @@ export default function Title({test,settest, selected}) {
       titre: text,
       description: description,
       check: false,
-      date: dateActuelle,
+      date: moment(moment()).format('DD MMM YYYY HH:MM'),
       rating: 2
     })
     .then(() => {

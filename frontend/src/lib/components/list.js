@@ -67,7 +67,6 @@ edit(test[index])
 }
 
 const starRating = (rating,index) => {
-console.log(starRating); 
 
 axios.put(`http://localhost:4200/todo/${index}`, {
 rating: rating
@@ -95,11 +94,11 @@ setOpen(false);
 
 return (  
 <div className='listjs'>
-<Grid container spacing={2}>
+<Grid container spacing={1}>
 { test ? test.slice(0).reverse().map((item,index) => 
 //item equivalent de test[i]x
 
-<Grid item xs={24} sm={4}>
+<Grid item md={3} sm={3}>
 <div className='case'>
 <div className='checkbox'>
 <Checkbox className='checkbox'
@@ -115,11 +114,11 @@ onChange={(event)=> update(event,item._id)}
 
 <div className='actions'>
 <IconButton aria-label="edit" className= 'editButton' onClick={(text) => {console.log("edited");editable(index)}}>
-<EditIcon fontSize="medium" />
+<EditIcon/>
 </IconButton>
 
 <IconButton aria-label="delete" className= 'deleteButton' onClick={()=>  handleClickOpen(item._id)} >
-<DeleteIcon fontSize="medium" />
+<DeleteIcon/>
 </IconButton>
 <Rating className="rating" id="rating"  value={item.rating} onChange={(event, newValue) => {
 update(newValue,item._id);

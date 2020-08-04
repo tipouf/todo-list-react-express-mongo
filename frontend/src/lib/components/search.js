@@ -9,30 +9,65 @@ import '../../App.css';
 
 const SearchField = ({items, onFilter, ...props}) => {
   const [search, setSearch] = useState('');
+  const [rateValue, setRateValue] = useState('');
+
   const filter = evt => {
     const search = get(evt, 'target.value', '').toLowerCase();
+    const rateValue = get (evt, 'target.value', '');
     setSearch(get(evt, 'target.value', ''));
+    setRateValue(get(evt, 'target.value', ''));
+    console.log('rateValue',rateValue);
+
     const filteredList = reduce(items, (acc, item) => {
       const lowerD = item.titre.toLowerCase();
       const lower = item.description.toLowerCase();
+      console.log('item.rating',item.rating);
+ 
+      if (item.rating === rateValue){
+        acc.push(item);
+      }
       if (lowerD.includes(search) || lower.includes(search)) {
         acc.push(item);
         console.log(item);
-      } 
+      }
 
       return acc;
     }, []);
+
     console.log('i am here');
     onFilter(filteredList);
     console.log(filteredList);
   };
 
-  const [value, setValue] = useState(0);
+  const filterRating = evt => {
+    const rateValue = get (evt, 'target.value', '');
+    setRateValue(get(evt, 'target.value', ''));
+    console.log('rateValue',rateValue);
+
+    const filteredList = reduce(items, (acc, item) => {
+      
+      if (item.rating == rateValue){
+        console.log('item.rating',item.rating);
+        console.log('rateValue',rateValue)
+        acc.push(item);
+      }
+  
+      return acc;
+    }, []);
+
+    console.log('i am here on rating');
+    onFilter(filteredList);
+    console.log(filteredList);
+  };
+
 
   const clear = () => {
     onFilter(items);
-    setSearch('');
+    setSearch('')
+    setRateValue('');
   };
+
+
 
   return (
     <div className= 'search'>
@@ -54,11 +89,9 @@ const SearchField = ({items, onFilter, ...props}) => {
       {...props}/>
         <Rating
           name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
+          value={rateValue}
+          onChange={filterRating}
+          />
     </div>
   );
 };
